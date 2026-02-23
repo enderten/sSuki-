@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sSuki! | One</title>
+    <style>
+        :root {
+            --bg-dark: #020205;
+            --blue-glow: rgba(0, 80, 255, 0.6);
+            --electric: #0070ff;
+            --deep-azure: #001233;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+            cursor: crosshair;
+        }
+
+        /* --- MOUSE GLOW EFFECT --- */
+        #glow-cursor {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 112, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+        }
+
+        /* --- DENSE BACKGROUND --- */
+        .background-wrapper {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+        }
+
+        .orb {
+            position: absolute;
+            background: var(--blue-glow);
+            border-radius: 50%;
+            filter: blur(120px);
+            animation: flow 25s infinite alternate ease-in-out;
+            opacity: 0.5;
+        }
+
+        .orb-1 { width: 900px; height: 900px; top: -10%; left: -10%; }
+        .orb-2 { width: 800px; height: 800px; bottom: -10%; right: -10%; background: var(--deep-azure); }
+        .orb-3 { width: 500px; height: 500px; top: 30%; left: 40%; background: #0044ff; }
+
+        @keyframes flow {
+            0% { transform: translate(0,0) scale(1); }
+            100% { transform: translate(100px, 150px) scale(1.2); }
+        }
+
+        /* --- LAYOUT --- */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        .logo-text { 
+            font-size: 2.5rem; 
+            font-weight: 900; 
+            letter-spacing: 0px; 
+            margin: 0;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        .hero-content h1 {
+            font-size: 8rem;
+            line-height: 0.8;
+            margin: 0;
+            font-weight: 900;
+            letter-spacing: -6px;
+            background: linear-gradient(to bottom, #fff, var(--electric));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .image-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-device {
+            width: 100%;
+            max-width: 600px;
+            filter: drop-shadow(0 0 50px var(--blue-glow));
+            animation: hover 6s ease-in-out infinite;
+            z-index: 5;
+        }
+
+        @keyframes hover {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(2deg); }
+        }
+
+        /* --- SPECS SECTION --- */
+        .specs-ribbon {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 5rem;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border-radius: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .spec-item h3 { color: var(--electric); font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .spec-item p { opacity: 0.5; line-height: 1.4; }
+
+        .disclaimer {
+            grid-column: span 2;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+            opacity: 0.4;
+            text-align: center;
+        }
+
+        .grain {
+            position: fixed;
+            inset: 0;
+            background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="glow-cursor"></div>
+    <div class="grain"></div>
+
+    <div class="background-wrapper">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="brand-container">
+                <h2 class="logo-text">sSuki<span>!</span></h2>
+            </div>
+            <div style="font-weight: bold; opacity: 0.6; letter-spacing: 2px;">Last: sSuki One!</div>
+        </header>
+
+        <section class="hero-grid">
+            <div class="hero-content">
+                <h1>sSuki!<br>One.</h1>
+                <p style="font-size: 1.5rem; opacity: 0.7; margin-top: 2rem; max-width: 400px;">
+                    Hardware becomes liquid. The image is not static, it is the center of everything.
+                </p>
+            </div>
+            
+            <div class="image-container">
+                <img src="eph.png" alt="sSuki! Device" class="main-device">
+            </div>
+        </section>
+
+        <div class="specs-ribbon">
+            <div class="spec-item">
+                <h3>Fluid OLED</h3>
+                <p>Colors that spill over the edges with an infinite refresh rate.</p>
+            </div>
+            <div class="spec-item">
+                <h3>Suki! OS 16.2</h3>
+                <p>Pure gestures that feel like touching water. A seamless digital flow.</p>
+            </div>
+            <div class="spec-item">
+                <h3>Azure Power</h3>
+                <p>Pure energy encapsulated in a liquid polymer structure.</p>
+            </div>
+            <div class="spec-item">
+                <h3>Infinite Vision</h3>
+                <p>The perfect integration between melted crystal and the sSuki interface.</p>
+            </div>
+            
+            <div class="disclaimer">
+                sSuki! is an imaginary enterprise; we don't actually send or distribute any product.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const glow = document.getElementById('glow-cursor');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+    </script>
+
+</body>
+</html>
